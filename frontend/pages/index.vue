@@ -1,28 +1,21 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        app
-      </h1>
-      <h2 class="subtitle">
-        My swell Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
+    <div class="row justify-content-center">
+      <div class="col-4 pt-5">
+        <b-card
+          title="Card Title"
+          img-src="https://picsum.photos/600/300/?image=25"
+          img-alt="Image"
+          img-top
+          tag="article"
+          class="mb-2"
         >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+          <b-card-text>
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          </b-card-text>
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
       </div>
     </div>
   </div>

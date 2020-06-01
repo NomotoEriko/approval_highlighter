@@ -1,8 +1,8 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "My swell Nuxt.js project",
-  "author": "",
+  "description": "主張Aに対して主張B中の同意箇所と反対箇所をハイライトする",
+  "author": "NomotoEriko",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -11,6 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "bootstrap-vue": "^2.15.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {}
