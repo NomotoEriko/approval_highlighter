@@ -11,7 +11,7 @@
           class="mb-2"
         >
           <b-card-text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.
+            {{ data.results.message }}
           </b-card-text>
 
           <b-button href="#" variant="primary">Go somewhere</b-button>
@@ -21,12 +21,16 @@
   </div>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'nuxt-property-decorator'
+import axios from 'axios'
 
-export default {
-  components: {
-    Logo
+@Component({})
+export default class MainComponent extends Vue {
+  async asyncData () {
+    const { data } = await axios.get('http://backend:3000/')
+    return { data }
   }
 }
 </script>
