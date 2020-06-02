@@ -1,6 +1,7 @@
 .env
 .bash_history
 .python_history
+.DS_store
 backend/.cache
 backend/.ipython
 backend/.ipynb_checkpoints
