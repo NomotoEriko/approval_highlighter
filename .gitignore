@@ -1,0 +1,8 @@
+.env
+.bash_history
+.python_history
+backend/.cache
+backend/.ipython
+backend/.ipynb_checkpoints
+backend/.local
+backend/.jupyter
