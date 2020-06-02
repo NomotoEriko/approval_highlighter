@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/home
+    environment:
+      HOST: ${BACKEND_HOST}
+      PORT: ${BACKEND_PORT}
+      LANG: ja_JP.UTF-8
+    ports:
+      - ${BACKEND_PORT}:3000
+    command: jupyter lab --ip 0.0.0.0 --port ${BACKEND_PORT} --allow-root --no-browser
+    tty: true
+    stdin_open: true
