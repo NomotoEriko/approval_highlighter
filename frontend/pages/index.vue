@@ -1,23 +1,29 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-4 pt-5">
-        <b-card
-          title="Card Title"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-          class="mb-2"
-        >
-          <b-card-text>
-            {{ data.results.message }}
-          </b-card-text>
-
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
+  <div>
+    <h1 class="mt-1">Approval Highlighter</h1>
+    <div class="cards mt-1">
+      <div class="card">
+        <span class="card__titile">あなたの意見</span>
+        <b-form-textarea
+          id="textarea"
+          v-model="src"
+          rows="10"
+          placeholder="あなたの意見を入力してください．"
+          no-resize
+        ></b-form-textarea>
+      </div>
+      <div class="card">
+        <span class="card__titile">比較したい意見</span>
+        <b-form-textarea
+          id="textarea"
+          v-model="tgt"
+          rows="10"
+          placeholder="比較したい意見を入力してください．"
+          no-resize
+        ></b-form-textarea>
       </div>
     </div>
+    <b-button class="mt-2" variant="info">比較を開始する！</b-button>
   </div>
 </template>
 
@@ -28,6 +34,9 @@ import axios from 'axios'
 
 @Component({})
 export default class MainComponent extends Vue {
+  src: string = ''
+  tgt: string = ''
+
   async asyncData () {
     const { data } = await axios.get('http://backend:3000/')
     return { data }
@@ -36,34 +45,24 @@ export default class MainComponent extends Vue {
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body {
   text-align: center;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.h1 {
+  font-size: 20px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.card__titile {
+  font-size: 1.3rem;
 }
 
-.links {
-  padding-top: 15px;
+.card {
+  display: inline-block;
+  background-color: #b5d7da;
+  padding: 10px;
+  margin: 5px;
+  height: 310px;
+  width: 400px;
 }
 </style>
