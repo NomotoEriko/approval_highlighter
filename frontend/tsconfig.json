@@ -32,7 +32,8 @@
       "@types/vue-cli-plugin-apollo",
       "@nuxtjs/moment",
       "vue-apollo/types",
-      "bootstrap-vue/esm"
+      "bootstrap-vue/esm",
+      "@nuxtjs/axios"
     ]
   },
   "exclude": [

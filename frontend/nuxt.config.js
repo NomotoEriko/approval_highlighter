@@ -39,8 +39,15 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/axios'
   ],
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': { target: 'http://backend:3000', pathRewrite: { '^/api/': '/' } }
+  },
   /*
   ** Build configuration
   */

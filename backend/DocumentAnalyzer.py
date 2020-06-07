@@ -3,7 +3,7 @@ import torch
 from transformers import BertJapaneseTokenizer, BertModel
 
 class DocumentAnalyzer:
-  def __init__(self, model_name='bert-base-japanese-whole-word-masking'):
+  def __init__(self, model_name='cl-tohoku/bert-base-japanese-whole-word-masking'):
     self.tokenizer = BertJapaneseTokenizer.from_pretrained(model_name)
     self.model = BertModel.from_pretrained(model_name)
     self.model.eval()

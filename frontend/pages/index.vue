@@ -1,45 +1,71 @@
 <template>
   <div>
     <h1 class="mt-1">Approval Highlighter</h1>
-    <div class="cards mt-1">
-      <div class="card">
-        <span class="card__titile">あなたの意見</span>
-        <b-form-textarea
-          id="textarea"
-          v-model="src"
-          rows="10"
-          placeholder="あなたの意見を入力してください．"
-          no-resize
-        ></b-form-textarea>
+    <b-form>
+      <div class="cards mt-1">
+        <div class="card">
+          <span class="card__titile">あなたの意見</span>
+          <b-form-textarea
+            id="textarea"
+            v-model="src"
+            rows="10"
+            placeholder="あなたの意見を入力してください．"
+            :disabled="!showForm"
+            no-resize
+          ></b-form-textarea>
+        </div>
+        <div class="card">
+          <span class="card__titile">比較したい意見</span>
+          <b-form-textarea
+            id="textarea"
+            v-model="tgt"
+            rows="10"
+            placeholder="比較したい意見を入力してください．"
+            :disabled="!showForm"
+            no-resize
+          ></b-form-textarea>
+        </div>
       </div>
-      <div class="card">
-        <span class="card__titile">比較したい意見</span>
-        <b-form-textarea
-          id="textarea"
-          v-model="tgt"
-          rows="10"
-          placeholder="比較したい意見を入力してください．"
-          no-resize
-        ></b-form-textarea>
-      </div>
+      <b-button class="mt-2" variant="info" @click="postForm" :disabled="!showForm">比較を開始する！</b-button>
+    </b-form>
+    <div v-if="!showForm">
+      {{ analysisResult }}
+      <b-button class="mt-2" variant="info" @click="showForm=true">戻る</b-button>
     </div>
-    <b-button class="mt-2" variant="info">比較を開始する！</b-button>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { Component } from 'nuxt-property-decorator'
-import axios from 'axios'
+
+interface AnalysisResult {
+  representative_sentence: string,
+  tgt_sentences: string[],
+  scores: number[]
+}
 
 @Component({})
 export default class MainComponent extends Vue {
+  showForm = true
   src: string = ''
   tgt: string = ''
+  analysisResult: AnalysisResult = {
+    representative_sentence: '',
+    tgt_sentences: [],
+    scores: []
+  }
 
-  async asyncData () {
-    const { data } = await axios.get('http://backend:3000/')
-    return { data }
+  async postForm () {
+    this.showForm = false
+    const params = {
+      src: this.src,
+      tgt: this.tgt
+    }
+    this.analysisResult = await this.$axios.$get('api/', {
+      params: params,
+      headers: {'Content-Type': 'application/json', 'charset': 'UTF-8'}
+    })
   }
 }
 </script>
