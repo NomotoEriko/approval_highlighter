@@ -7,3 +7,5 @@ backend/.ipython
 backend/.ipynb_checkpoints
 backend/.local
 backend/.jupyter
+backend/__pycache__
+backend/workspace.ipynb
