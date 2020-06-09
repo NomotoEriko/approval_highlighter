@@ -41,7 +41,6 @@
           <div class="card__content">
             <span v-for="(sentence, index) in analysisResult.tgt_sentences" :key="index" :style="'color:' + score2Color(analysisResult.scores[index])">
               {{ sentence }}
-              {{ analysisResult.scores[index] }}
             </span>
           </div>
         </div>

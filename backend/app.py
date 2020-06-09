@@ -2,12 +2,10 @@
 from os import environ
 from flask import Flask, jsonify, request
 from DocumentAnalyzer import DocumentAnalyzer
-# from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 analyzer = DocumentAnalyzer()
-# cors = CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:3000"}})
 
 @app.route('/', methods=['GET'])
 def analyze():

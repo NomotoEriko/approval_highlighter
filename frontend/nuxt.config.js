@@ -1,9 +1,6 @@
 
 export default {
-  mode: 'universal',
-  /*
-  ** Headers of the page
-  */
+  mode: 'spa',
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -15,29 +12,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
-  css: [
-  ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
   buildModules: [
     '@nuxt/typescript-build'
   ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios'
@@ -46,16 +24,6 @@ export default {
     proxy: true
   },
   proxy: {
-  },
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
     '/api/': { target: `http://${process.env.APP_HOST}:${process.env.APP_PORT}`, pathRewrite: { '^/api/': '/' } }
   }
 }
