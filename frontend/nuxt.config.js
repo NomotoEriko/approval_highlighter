@@ -46,7 +46,6 @@ export default {
     proxy: true
   },
   proxy: {
-    '/api/': { target: 'http://backend:3000', pathRewrite: { '^/api/': '/' } }
   },
   /*
   ** Build configuration
@@ -57,5 +56,6 @@ export default {
     */
     extend (config, ctx) {
     }
+    '/api/': { target: `http://${process.env.APP_HOST}:${process.env.APP_PORT}`, pathRewrite: { '^/api/': '/' } }
   }
 }

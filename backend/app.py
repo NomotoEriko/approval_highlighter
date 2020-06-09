@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from os import environ
 from flask import Flask, jsonify, request
 from DocumentAnalyzer import DocumentAnalyzer
 # from flask_cors import CORS
@@ -22,4 +23,4 @@ def analyze():
   return jsonify(results)
 
 if __name__ == '__main__':
-  app.run(debug=False, host="0.0.0.0", port="3000")
+  app.run(debug=False, host=environ['HOST'], port=environ['PORT'])

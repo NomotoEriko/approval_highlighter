@@ -8,8 +8,6 @@ services:
       HOST: ${BACKEND_HOST}
       PORT: ${BACKEND_PORT}
       LANG: C.UTF-8
-    ports:
-      - ${BACKEND_PORT}:3000
     command: python3 app.py
     tty: true
     stdin_open: true
@@ -23,8 +21,10 @@ services:
       - ./frontend:/app
       - frontend-node_modules:/app/node_modules
     environment:
-      - HOST=${FRONTEND_HOST}
-      - PORT=${FRONTEND_PORT}
+      HOST: ${FRONTEND_HOST}
+      PORT: ${FRONTEND_PORT}
+      APP_HOST: backend
+      APP_PORT: ${BACKEND_PORT}
     tty: true
 
 volumes:
